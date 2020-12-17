@@ -1,0 +1,36 @@
+{
+    "items":[{
+        "id":0,
+        "quant":10,
+        "description":"Funfetti cake",
+        "name":"Funfetti",
+        "image":"images/cake1.jpg",
+        "price":300,
+        "pastryAvl":true
+    },{
+        "id":1,
+        "quant":10,
+        "description": "Pineapple cake",
+        "name":"Pineapple",
+        "image":"images/cake2.jpg",
+        "price":190,
+        "pastryAvl":true
+    },{
+        "id":2,
+        "quant":10,
+        "description":"Rasmalai cake",
+        "name":"Rasmalai",
+        "image":"images/cake3.jpg",
+        "price":410,
+        "pastryAvl":true
+    },{
+        "id":3,
+        "quant":10,
+        "description":"Panda cake",
+        "name":"Panda",
+        "image":"images/cake4.jpg",
+        "price":600,
+        "pastryAvl":true
+    }
+    ]
+}

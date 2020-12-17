@@ -67,9 +67,7 @@ const reducer = (state = intState, action) => {
         return {
             ...newState,
             order :  orderObj(),
-            item: updateInventory(), 
-            
-                      
+            item: updateInventory(),       
             count: calculateCount()
         }
     }
