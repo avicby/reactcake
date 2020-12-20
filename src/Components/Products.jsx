@@ -16,7 +16,7 @@ export const Products = (props) => {
                                </a>
                                <div className="product-price">
                                    <div>{formatCurrency(prod.price)}</div>
-                                   <Button sign= "+" identifier={prod.id} updateCount={props.updateCount} />
+                                   <Button sign= "+" identifier={prod.id} addToBtnProp={props.addToCartProp} />
                                </div>
                            </div>
                        </li>

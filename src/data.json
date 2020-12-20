@@ -23,7 +23,7 @@
         "image":"images/cake3.jpg",
         "price":410,
         "availableSizes":["750gms","250gms"]
-    },{ 
+    },{
         "id":3,
         "quant":10,
         "description":"Panda cake",
