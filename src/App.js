@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {Products} from "./Components/Products";
 import Cart from "./Components/Cart"
 import Filter from './Components/Filter';
+import { productActions } from './action/productActions';
 
 class App extends Component {
   // constructor(){
@@ -31,9 +32,9 @@ class App extends Component {
               filterProducts={this.props.filterProducts}
               sortProducts={this.props.sortProducts}>   
               </Filter>
-              <div className="main"><Products products={this.props.item} updateCount={this.props.changeCount}></Products></div>
+              <Products products={this.props.item} addToCartProp={this.props.updateCart}></Products>
             </div>
-            <div className="sidebar"><Cart order={this.props.order}></Cart></div>
+            <div className="sidebar"><Cart order={this.props.order} removeFromCart={this.props.updateCart}></Cart></div>
           </div>
         <div className="App">
           <div>
@@ -50,14 +51,6 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeCount : (val) => dispatch({type:"UPDATE", value: val}),
-    sortProducts: (event) => dispatch({type:"SORT", value:event}),
-    filterProducts: (event) => dispatch({type:"FILTER", value:event})
-  }
-}
-
 const mapStateToProps = (state) => {
   return {
     count: state.count,
@@ -66,4 +59,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(App) ;
+export default connect (mapStateToProps, productActions)(App) ;
