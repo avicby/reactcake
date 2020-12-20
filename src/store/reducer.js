@@ -113,6 +113,11 @@ const reducer = (state = intState, action) => {
                 size: filter,
                 item: sortState(displayItem, newState.sort)
             } 
+        case "CHECKOUT_CART":
+            return {
+                ...newState.order,
+                checkout:true 
+            }
         default:
             return newState;
     }

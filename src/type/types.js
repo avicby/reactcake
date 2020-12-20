@@ -2,4 +2,5 @@ export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const UPDATE_CART = "UPDATE_CART";
 export const SORT_PRODUCT = "SORT_PRODUCT";
 export const FILTER_PRODUCT = "FILTER_PRODUCT";
+export const CHECKOUT_CART = "CHECKOUT_CART";
 //export const REMOVE_CART = "REMOVE_CART";

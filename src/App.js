@@ -34,7 +34,12 @@ class App extends Component {
               </Filter>
               <Products products={this.props.item} addToCartProp={this.props.updateCart}></Products>
             </div>
-            <div className="sidebar"><Cart order={this.props.order} removeFromCart={this.props.updateCart}></Cart></div>
+            <div className="sidebar">
+              <Cart order={this.props.order} 
+              createOrder={this.props.createOrder}
+              removeFromCart={this.props.updateCart}
+              checkout={this.props.checkout}>
+              </Cart></div>
           </div>
         <div className="App">
           <div>
