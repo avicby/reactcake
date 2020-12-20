@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { Button } from './Button';
 import formatCurrency from "../util";
 
-export default class Products extends Component {
-    render() {
+
+export const Products = (props) => {
         return (
             <div>
                <ul className="products">
-                   {this.props.products.map(prod => (
+                   {props.products.map(prod => (
                        <li key={prod.id}>
                            <div className="product">
                                <a href={"#"+prod.id}>
@@ -16,13 +16,12 @@ export default class Products extends Component {
                                </a>
                                <div className="product-price">
                                    <div>{formatCurrency(prod.price)}</div>
-                                   <Button sign= "+" identifier={prod.id} updateCount={this.props.changeCount} />
+                                   <Button sign= "+" identifier={prod.id} updateCount={props.updateCount} />
                                </div>
                            </div>
                        </li>
                    ))}
                 </ul> 
             </div>
-        )
-    }
+        );  
 }

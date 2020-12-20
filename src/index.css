@@ -119,5 +119,15 @@ footer{
 .button:hover {
   border: 0.1rem #808080 solid;
 }
-
+/*Filter class*/
+.filter{
+  display: flex;
+  padding: 1rem;
+  margin:1rem;
+  border-bottom:0.1rem grey solid;
+  justify-content: space-between;
+}
+.filter div{
+  flex: 1;
+}
 

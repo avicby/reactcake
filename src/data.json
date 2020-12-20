@@ -6,7 +6,7 @@
         "name":"Funfetti",
         "image":"images/cake1.jpg",
         "price":300,
-        "pastryAvl":true
+        "availableSizes":["750gms","250gms","pastry"]
     },{
         "id":1,
         "quant":10,
@@ -14,7 +14,7 @@
         "name":"Pineapple",
         "image":"images/cake2.jpg",
         "price":190,
-        "pastryAvl":true
+        "availableSizes":["750gms","pastry"]
     },{
         "id":2,
         "quant":10,
@@ -22,15 +22,15 @@
         "name":"Rasmalai",
         "image":"images/cake3.jpg",
         "price":410,
-        "pastryAvl":true
-    },{
+        "availableSizes":["750gms","250gms"]
+    },{ 
         "id":3,
         "quant":10,
         "description":"Panda cake",
         "name":"Panda",
         "image":"images/cake4.jpg",
         "price":600,
-        "pastryAvl":true
+        "availableSizes":["750gms"]
     }
     ]
 }

@@ -11,5 +11,3 @@ export const Button = (props) => {
             </button>
         ); 
 }
-
-

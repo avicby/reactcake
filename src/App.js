@@ -2,19 +2,20 @@ import React, {Component} from 'react';
 import './App.css';
 //import {Button} from './Components/Button';
 import { connect } from 'react-redux';
-import data from "./data.json"
-import Products from "./Components/Products";
+import {Products} from "./Components/Products";
+import Cart from "./Components/Cart"
+import Filter from './Components/Filter';
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      products: data.items,
-      onlyPastry : false,
-      sort: ""
-    } 
-    console.log(this.state);
-  }
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     products: data.items,
+  //     onlyPastry : false,
+  //     sort: ""
+  //   } 
+  //   console.log(this.state);
+  // }
   render() {
       return (
         <div className='grid-container'>
@@ -23,34 +24,22 @@ class App extends Component {
         </header>
         <main>
           <div className="content">
-            <div className="main"><Products products={this.state.products}></Products></div>
-            <div className="sidebar">Cart Items</div>
+            <div className="main">
+              <Filter itmCount={this.props.item.length}
+              size={this.props.size}
+              sort={this.props.sort}  
+              filterProducts={this.props.filterProducts}
+              sortProducts={this.props.sortProducts}>   
+              </Filter>
+              <div className="main"><Products products={this.props.item} updateCount={this.props.changeCount}></Products></div>
+            </div>
+            <div className="sidebar"><Cart order={this.props.order}></Cart></div>
           </div>
         <div className="App">
           <div>
           Current count: <span>{this.props.count}</span>
           </div>  
         <hr />
-          <div>
-            <ul>
-              <div className="col">
-                <div><b>Items: </b></div>
-                {this.props.item.map(it => (
-                  <li className="listBtnClass" key={it.id} >
-                    <div></div>
-                  </li>
-                ))}
-              </div>
-              <div className="col">
-                <div><b>Order: </b></div>
-                {this.props.order.map(it => 
-                  <li className="listBtnClass" key={it.oid}>
-                    {it.cartQuant} {it.itmName}
-                  </li>
-                )}
-              </div>
-            </ul>
-          </div>
         </div>
         </main>
         <footer>
@@ -63,7 +52,9 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeCount : (val) => dispatch({type:"UPDATE", value: val})
+    changeCount : (val) => dispatch({type:"UPDATE", value: val}),
+    sortProducts: (event) => dispatch({type:"SORT", value:event}),
+    filterProducts: (event) => dispatch({type:"FILTER", value:event})
   }
 }
 
