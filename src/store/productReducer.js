@@ -10,7 +10,7 @@ const intState = {
 }
 
 const initQuant = intState.item.map(a => a.quant);
-const reducer = (state = intState, action) => {
+export const productReducer = (state = intState, action) => {
     
     const newState = { ...state };
     const sortState = ((filterState, sort) => {
@@ -132,9 +132,3 @@ const reducer = (state = intState, action) => {
     }
 
 }
-
-
-
-//const store = createStore(reducer);
-
-export default reducer;

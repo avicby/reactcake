@@ -3,4 +3,7 @@ export const UPDATE_CART = "UPDATE_CART";
 export const SORT_PRODUCT = "SORT_PRODUCT";
 export const FILTER_PRODUCT = "FILTER_PRODUCT";
 export const CHECKOUT_CART = "CHECKOUT_CART";
+export const CREATE_ORDER = "CREATE_ORDER";
+export const ON_CHECKOUT = "ON_CHECKOUT";
+export const HANDLE_CHECKOUT_INPUT = "HANDLE_CHECKOUT_INPUT";
 //export const REMOVE_CART = "REMOVE_CART";

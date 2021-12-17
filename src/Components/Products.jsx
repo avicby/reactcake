@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from './Button';
 import formatCurrency from "../util";
 import Fade from "react-reveal/Fade"
-import Modal from "react-modal";
+
 export const Products = (props) => {
     return (
         <div>

@@ -3,9 +3,9 @@ import './App.css';
 //import {Button} from './Components/Button';
 import { connect } from 'react-redux';
 import {Products} from "./Components/Products";
-import Cart from "./Components/Cart"
+import {Cart} from "./Components/Cart"
 import Filter from './Components/Filter';
-import { productActions } from './action/productActions';
+import { commonActions } from './action/commonActions';
 
 class App extends Component {
   // constructor(){
@@ -35,15 +35,17 @@ class App extends Component {
               <Products products={this.props.item} addToCartProp={this.props.updateCart}></Products>
             </div>
             <div className="sidebar">
-              <Cart order={this.props.order} 
+            
+              <Cart cartItems={this.props.cartItems} 
               createOrder={this.props.createOrder}
               removeFromCart={this.props.updateCart}
               checkout={this.props.checkout}>
-              </Cart></div>
+              </Cart>
+              </div>
           </div>
         <div className="App">
           <div>
-          Current count: <span>{this.props.count}</span>
+          Current count: <span>"Count"</span>
           </div>  
         <hr />
         </div>
@@ -55,13 +57,10 @@ class App extends Component {
       );
   }
 }
-
 const mapStateToProps = (state) => {
   return {
-    count: state.count,
-    order : state.order,
-    item: state.item
+    cartItems :state.order.cartItems,
+    item: state.item.item
   }
 }
-
-export default connect (mapStateToProps, productActions)(App) ;
+export default connect (mapStateToProps, commonActions)(App) ;
