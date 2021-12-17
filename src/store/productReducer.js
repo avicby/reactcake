@@ -6,11 +6,12 @@ const intState = {
     sort: "latest",
     size: "",
     count: 0,
-    order: []
+    order: localStorage.getItem("order") ? JSON.parse(localStorage.getItem("order")) : []
 }
 
 const initQuant = intState.item.map(a => a.quant);
-const reducer = (state = intState, action) => {
+export const productReducer = (state = intState, action) => {
+    
     const newState = { ...state };
     const sortState = ((filterState, sort) => {
         let itrObj;
@@ -30,10 +31,15 @@ const reducer = (state = intState, action) => {
     //const full = newState.item.filter( it => it.quant===10  );
     switch(action.type){
         case "UPDATE_CART" :
-            const itemName = newState.item[action.value.btnid].name;
-            const price = newState.item[action.value.btnid].price;
-            const img = newState.item[action.value.btnid].image
             let itmIndex = action.value.btnid;
+            let itemName,price,img;
+            newState.item.forEach(i => {
+                if(i.id === itmIndex){
+                    itemName = i.name;
+                    price = i.price;
+                    img = i.image 
+                }
+            })
             let invQuantOrd = newState.item.find(it => it.id === itmIndex).quant;
             let arg = action.value.val;
             let newelem = true;
@@ -43,7 +49,7 @@ const reducer = (state = intState, action) => {
                     if (ordArr.length === 0) {
                         newelem = true;
                     }
-                    ordArr.filter(el => {
+                    ordArr.forEach(el => {
                         if (el.oid === itmIndex) {
                             if ((invQuantOrd === 0 && arg === -1) || (invQuantOrd > 0)) {
                                 el.cartQuant += arg;
@@ -51,9 +57,10 @@ const reducer = (state = intState, action) => {
                             newelem = false;
                         }
                     });
-
                     if (newelem === true && arg >= 1) {
-                        ordArr.splice(itmIndex, 0, { oid: itmIndex, cartQuant: arg, itmName: itemName , price: price, image:img });
+                        ordArr.splice(itmIndex, 0, { 
+                            oid: itmIndex, cartQuant: arg, itmName: itemName , price: price, image:img 
+                            });
                     }
                     if (arg === -1 && newState.order.some(ut => ut.oid === itmIndex && ut.cartQuant === 0)) {
                         ordArr.splice(ordArr.findIndex(item => item.oid === itmIndex), 1);
@@ -71,7 +78,7 @@ const reducer = (state = intState, action) => {
             const updateInventory = (() => {
                 let itemInv = newState.item;
                 return function () {
-                    itemInv.filter(el => {
+                    itemInv.forEach(el => {
                         if (el.id === itmIndex) {
                             if ((el.quant === 0 && arg === -1) ||
                                 (el.quant === initQuant[itmIndex] && arg === 1) ||
@@ -84,12 +91,14 @@ const reducer = (state = intState, action) => {
                 }
 
             })();
-            return {
+            const updatedState = {
                 ...newState,
                 order: orderObj(),
                 item: updateInventory(),
                 count: calculateCount()
             }
+            localStorage.setItem("order",JSON.stringify(updatedState.order));
+            return updatedState;
         case "SORT_PRODUCT":
             const sort = action.value.target.value;
             return {
@@ -123,9 +132,3 @@ const reducer = (state = intState, action) => {
     }
 
 }
-
-
-
-//const store = createStore(reducer);
-
-export default reducer;

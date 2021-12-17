@@ -14,6 +14,7 @@ export const Button = (props) => {
                         break;
                     case "checkout":
                         props.checkout(true);
+                        break;
                     default: 
                     }
                 }                 
